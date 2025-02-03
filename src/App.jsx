@@ -1,34 +1,44 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Button, Navbar, Container, Nav} from 'react-bootstrap'
+import data from './data.js';
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  let [shoes] = useState(data)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+  return(
+    <div>
+    <Navbar bg="dark" variant="dark">
+      <Container>
+      <Navbar.Brand href="#home">space;BAR</Navbar.Brand>
+      <Nav className="me-auto">
+        <Nav.Link href="#home">Home</Nav.Link>
+        <Nav.Link href="#features">cart</Nav.Link>
+        <Nav.Link href="#pricing"></Nav.Link>
+      </Nav>
+      </Container>
+    </Navbar>
+
+    <div className='main-bg'></div>
+
+    <div className="container">
+      <Card shoes={shoes[0]} i={1}/>
+      <Card shoes={shoes[1]} i ={2}/>
+      <Card shoes={shoes[2]} i={3}/>
+    </div>
+  </div>
+  )
+}
+function Card(props) {
+  return(
+    <div className="col-md-4">
+     <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+      <h4>{props.shoes.tilte}</h4>
+      <p>{props.shoes.content}</p>
+      <p>{props.shoes.price}</p>
+    </div>
   )
 }
 
